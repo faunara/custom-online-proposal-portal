@@ -3,7 +3,7 @@
 A responsive proposal-management app with a Node.js/Express API and **Supabase-hosted PostgreSQL** persistence.
 
 ## Features
-- Password-protected workspace administration
+- Open workspace dashboard with no sign-in (temporary)
 - Persistent proposal creation, editing, search, and status tracking
 - Secure random client share links
 - Client-facing proposal view
@@ -30,8 +30,6 @@ A responsive proposal-management app with a Node.js/Express API and **Supabase-h
 3. Set these values in `.env`:
    - `DATABASE_URL`: the PostgreSQL connection string from your Supabase project's **Connect** panel (Session pooler is a good default for hosted Node apps)
    - `DATABASE_SSL=true`: enables TLS for the Supabase database connection
-   - `ADMIN_PASSWORD`: a strong, unique password for the portal's admin login
-   - `SESSION_SECRET`: a random secret with at least 32 characters
 4. Install and start:
 
    ```bash
@@ -39,13 +37,13 @@ A responsive proposal-management app with a Node.js/Express API and **Supabase-h
    npm start
    ```
 
-5. Open http://localhost:3000 and sign in using `ADMIN_PASSWORD`. Check `/api/health` to confirm the app can reach the database.
+5. Open http://localhost:3000. The dashboard opens without sign-in. Check `/api/health` to confirm the app can reach the database.
 
 ## Deploy
 
-Deploy this repository to a Node.js host (for example Render, Railway, or Fly.io) and add the environment variables above in that host's dashboard. Set `NODE_ENV=production` and `PORT` if your host requires it. Run `schema.sql` once in the Supabase SQL Editor before opening the app. The host must serve the app and API from the same origin so the HttpOnly admin session cookie works.
+Deploy this repository to a Node.js host (for example Render, Railway, or Fly.io) and add the environment variables above in that host's dashboard. Set `NODE_ENV=production` and `PORT` if your host requires it. Run `schema.sql` once in the Supabase SQL Editor before opening the app. The app and API are served from the same origin.
 
-**Important:** Do not put your Supabase database password, connection string, `ADMIN_PASSWORD`, or `SESSION_SECRET` in GitHub, frontend JavaScript, or this chat. Add them only as private environment variables in your local `.env` file or hosting provider's secret settings. Never use a Supabase `service_role` key in browser code; this app connects to PostgreSQL from its server.
+**Important:** Do not put your Supabase database password or connection string in GitHub, frontend JavaScript, or this chat. Add it only as a private environment variable in your local `.env` file or hosting provider's secret settings. Never use a Supabase `service_role` key in browser code; this app connects to PostgreSQL from its server.
 
 ## Client links and approvals
 
@@ -54,11 +52,11 @@ Saving a proposal creates a high-entropy, unguessable share token. The client li
 ## Security notes
 
 - Never commit your real `.env` file or database credentials.
-- Use HTTPS in production. The session cookie is marked Secure when `NODE_ENV=production`.
-- Use a unique, strong `ADMIN_PASSWORD` and `SESSION_SECRET`.
+- Use HTTPS in production.
+- **Temporary no-auth mode:** anyone who can reach the dashboard can list, create, edit, and view proposal records through the API. Do not use real client or confidential data until authentication is restored or access is otherwise restricted.
 - The client share URL is a bearer link: anyone who has it can view and respond to that proposal. Share it only with the intended client.
 - Enable and review Supabase backups for your project.
 
 ## Current scope
 
-The admin area uses one shared workspace password rather than individual user accounts/roles. Email delivery, multi-user permissions, payment collection, and automated reminders are not included yet.
+Authentication is temporarily disabled. Individual user accounts/roles, email delivery, payment collection, and automated reminders are not included yet.
