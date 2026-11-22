@@ -14,7 +14,8 @@ function showShare(p){$('shareResult').style.display='block';$('shareResult').in
 async function loadActivity(id){try{const items=await api('/api/proposals/'+id+'/activity');$('activityPanel').style.display='block';$('activityPanel').innerHTML='<strong>Client activity</strong>'+(items.length?items.map(x=>'<p><b>'+ (x.action==='approved'?'Approved':'Requested changes') +'</b> · '+dateLabel(x.created_at)+(x.comment?'<br>'+escapeHtml(x.comment):'')+'</p>').join(''):'<p>No client responses yet.</p>')}catch(e){$('activityPanel').textContent=e.message}}
 async function copyShare(token){const link=location.origin+location.pathname+'?share='+token;try{await navigator.clipboard.writeText(link);toast('Client link copied to clipboard.')}catch{prompt('Copy this client link:',link)}}
 document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+function newProposal(){editingId=null;$('titleInput').value='';$('clientInput').value='';$('emailInput').value='';$('overviewInput').value='';$('priceInput').value='0';$('currencyInput').value='INR';$('statusInput').value='Draft';$('timelineInput').value='';$('deliverablesInput').value='';$('saveProposal').textContent='Save proposal';$('deleteProposal').style.display='none';$('shareResult').style.display='none';$('activityPanel').style.display='none';syncPreview();go('builder')}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>b.dataset.go==='builder'?newProposal():go(b.dataset.go)));
 $('search').addEventListener('input',e=>renderRows('proposalRows',e.target.value,$('statusFilter').value));
 $('statusFilter').addEventListener('change',e=>renderRows('proposalRows',$('search').value,e.target.value));
 $('search2').addEventListener('input',e=>renderRows('proposalRows2',e.target.value));
