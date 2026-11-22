@@ -9,7 +9,7 @@ const port = Number(process.env.PORT || 3000);
 const pool = new Pool({ connectionString: process.env.DATABASE_URL, ssl: process.env.DATABASE_SSL === 'false' ? false : { rejectUnauthorized: false } });
 const secret = process.env.SESSION_SECRET;
 const adminPassword = process.env.ADMIN_PASSWORD;
-if (!process.env.DATABASE_URL || !secret || !adminPassword) { console.error('Set DATABASE_URL, SESSION_SECRET, and ADMIN_PASSWORD.'); process.exit(1); }
+// Configure DATABASE_URL, SESSION_SECRET, and ADMIN_PASSWORD in the deployment environment before using the API.
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -68,4 +68,6 @@ app.post('/api/public/:token/decision', async (req, res) => {
 });
 app.get('/api/proposals/:id/activity', isAdmin, async (req, res) => { try { const q = await pool.query('SELECT action, comment, created_at FROM proposal_activity WHERE proposal_id=$1 ORDER BY created_at DESC', [req.params.id]); res.json(q.rows); } catch { res.status(500).json({ error: 'Could not load activity.' }); } });
 app.get('*', (_req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
-app.listen(port, () => console.log('Northstar portal listening on port ' + port));
+if (require.main === module) app.listen(port, () => console.log('Northstar portal listening on port ' + port));
+
+module.exports = app;
