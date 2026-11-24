@@ -35,7 +35,7 @@ $('templateSelect').addEventListener('change',e=>{
  $('titleInput').value=template.title;
  $('overviewInput').value=template.overview;
  $('timelineInput').value=template.timeline;
- $('deliverablesInput').value=template.deliverables.join('\\n');
+ $('deliverablesInput').value=template.deliverables.join('\n');
  syncPreview();
 });
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>b.dataset.go==='builder'?newProposal():go(b.dataset.go)));
