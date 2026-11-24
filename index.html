@@ -38,25 +38,35 @@ th{background:#0b1827;color:#8198af}td{border-color:#203247;color:#b6c6d6}td str
 .toast{background:#d7ff9a;color:#0a1720}.share-result{background:#142a3d;color:#dce9f5}.share-result a{color:#a3ff12}
 .auth-card{background:#102033;color:#edf5fc}.auth-card h2{color:#f3f8ff}.auth-card p{color:#a8b8c9}
 @media(max-width:700px){.topbar{background:#0c1a2a}.sidebar{border:0}}
+
+/* Horizontal top navigation inspired by the supplied reference */
+.app{display:block;min-height:100vh}.sidebar{display:none}
+.topbar{height:82px;padding:0 clamp(18px,4vw,64px);gap:28px;justify-content:space-between;background:#0b1928;border-bottom:1px solid #26394c}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;padding:0;color:#f4f8fc;font-weight:750;letter-spacing:.2px;font-size:20px}
+.brand-mark{height:36px;width:36px;border-radius:11px;background:linear-gradient(135deg,#a3ff12,#20d5e8);display:grid;place-items:center;font-weight:900;color:#07111f;box-shadow:0 7px 20px #20d5e844}
+.top-nav{display:flex;align-items:center;justify-content:center;gap:clamp(2px,1.2vw,18px);flex:1;min-width:0}
+.top-nav button{width:auto;white-space:nowrap;border:0;background:transparent;color:#b7c6d6;text-align:center;padding:12px 13px;border-radius:8px;margin:0;display:flex;align-items:center;gap:8px;font-size:13px}
+.top-nav button.active,.top-nav button:hover{background:#a3ff1218;color:#caff7a;box-shadow:inset 0 -2px #a3ff12}.top-nav .ico{width:auto;font-size:15px}
+.top-actions{flex:0 0 auto;gap:12px}.saved-indicator{font-size:11px;color:#9eb0c2;white-space:nowrap}.top-actions .avatar{background:#a3ff12;color:#07111f}.content{padding-top:38px}
+@media(max-width:900px){.topbar{height:auto;min-height:76px;flex-wrap:wrap;padding:14px 20px;gap:10px}.top-nav{order:3;flex-basis:100%;justify-content:flex-start;overflow-x:auto;padding-bottom:2px}.top-nav button{flex:0 0 auto}.top-actions{margin-left:auto}}
+@media(max-width:700px){.topbar{height:auto;padding:12px 15px;background:#0c1a2a}.top-nav{gap:4px}.top-nav button{font-size:12px;padding:10px 11px}.saved-indicator{display:none}.content{padding:25px 16px 45px}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar">
-  <div class="brand"><span class="brand-mark">S</span> sentinel<span style="font-weight:400;color:#9fb8e4">.</span></div>
-  <div class="nav-label">Workspace</div>
-  <nav class="nav">
-    <button class="active" data-page="dashboard"><span class="ico">▦</span> Overview</button>
-    <button data-page="proposals"><span class="ico">▤</span> Proposals</button>
-    <button data-page="builder"><span class="ico">✎</span> Proposal builder</button>
-    <button data-page="client"><span class="ico">↗</span> Client preview</button>
-  </nav>
-  <div class="nav-label">Manage</div>
-  <nav class="nav"><button data-page="settings"><span class="ico">⚙</span> Settings</button></nav>
-  <div class="side-bottom"><div class="avatar">FA</div><div><b style="font-size:12px">Sentinel Security</b><small>Workspace admin</small></div></div>
-</aside>
 <main class="main">
-<header class="topbar"><div class="crumb"><span class="mobile-menu">☰ &nbsp;</span> Workspace &nbsp;/&nbsp; <b id="crumb">Overview</b></div><div class="top-actions"><span style="font-size:12px;color:#738099">● &nbsp;All changes saved</span><button class="circle" aria-label="Notifications">♧</button><div class="avatar">FA</div></div></header>
+<header class="topbar">
+ <div class="brand"><span class="brand-mark">S</span><span>sentinel<span style="font-weight:400;color:#20d5e8">.</span></span></div>
+ <nav class="nav top-nav" aria-label="Main navigation">
+  <button class="active" data-page="dashboard"><span class="ico">▦</span> Overview</button>
+  <button data-page="proposals"><span class="ico">▤</span> Proposals</button>
+  <button data-page="builder"><span class="ico">✎</span> Proposal builder</button>
+  <button data-page="client"><span class="ico">↗</span> Client preview</button>
+  <button data-page="settings"><span class="ico">⚙</span> Settings</button>
+ </nav>
+ <div class="top-actions"><span class="saved-indicator">● &nbsp;All changes saved</span><button class="circle" aria-label="Notifications">♧</button><div class="avatar">FA</div></div>
+ <span id="crumb" hidden>Overview</span>
+</header>
 <div class="content">
 <section class="page active" id="dashboard">
   <div class="welcome"><div><div class="eyebrow">SECURITY OPERATIONS · CLIENT ENGAGEMENTS</div><h1>Security proposals, under control.</h1><p class="sub">Monitor assessments, engagements, and client decisions from one secure workspace.</p></div><button class="btn primary" data-go="builder">＋ &nbsp; Create proposal</button></div>
