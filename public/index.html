@@ -136,59 +136,20 @@ tbody tr:hover{background:#ffffff08}
 }
 
 
-/* Vajra opening screen */
-#vajraOpening{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:auto;background:#020306;color:#f4f6f8;padding:28px}
+/* Original VAJRA opening photograph — do not recreate or alter the source image */
+#vajraOpening{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;overflow:hidden;background:#111}
 #vajraOpening[hidden]{display:none}
-.vajra-opening-inner{width:min(1440px,100%);text-align:center;margin:auto}
-.vajra-emblem{width:min(360px,38vw);height:auto;display:block;margin:0 auto -6px;filter:drop-shadow(0 0 22px #078fff35)}
-.vajra-wordmark{font-family:Georgia,'Times New Roman',serif;font-size:clamp(64px,11vw,160px);font-weight:700;line-height:.86;letter-spacing:.015em;background:linear-gradient(180deg,#fff 12%,#d9dde2 48%,#77818c 85%);color:transparent;background-clip:text;-webkit-background-clip:text}
-.vajra-subbrand{font-size:clamp(22px,4.4vw,58px);font-weight:650;letter-spacing:.34em;margin:14px 0 12px;color:#e7ebef}
-.vajra-subbrand span{color:#159cf4}
-.vajra-motto{font-size:clamp(10px,1.65vw,20px);letter-spacing:.55em;color:#e6e8eb;margin:18px 0 48px}
-.vajra-motto .red{color:#f20b19}.vajra-motto .blue{color:#078df5}
-.vajra-services{display:grid;grid-template-columns:repeat(4,1fr);max-width:1160px;margin:0 auto 38px}
-.vajra-service{padding:12px 18px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:126px;border-right:1px solid #87909a}
-.vajra-service:last-child{border-right:0}
-.vajra-service svg{width:62px;height:62px;fill:none;stroke:#078df5;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.vajra-service:first-child svg{stroke:#f20b19}
-.vajra-service strong{font-size:clamp(13px,1.6vw,22px);font-weight:500;color:#f3f4f6}
-.vajra-service:first-child strong{color:#f20b19}
-.vajra-enter{border:1px solid #168df0;background:linear-gradient(100deg,#f20b19,#087ef0);color:white;border-radius:999px;padding:14px 34px;font-weight:750;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 0 28px #087ef044;transition:transform .2s,box-shadow .2s}
-.vajra-enter:hover{transform:translateY(-3px);box-shadow:0 0 38px #087ef077}
-.vajra-enter-note{font-size:11px;color:#87919c;margin-top:12px;letter-spacing:.08em}
-@media(max-width:680px){#vajraOpening{padding:24px 14px}.vajra-emblem{width:min(270px,62vw)}.vajra-motto{letter-spacing:.25em;margin-bottom:30px}.vajra-services{grid-template-columns:repeat(2,1fr);gap:0}.vajra-service{border-right:0;border-bottom:1px solid #606a75;min-height:110px}.vajra-service:nth-child(odd){border-right:1px solid #606a75}.vajra-service:nth-last-child(-n+2){border-bottom:0}.vajra-service svg{width:46px;height:46px}}
-@media(prefers-reduced-motion:reduce){.vajra-enter{transition:none}}
-
+#vajraOpening .original-opening-photo{display:block;width:100%;height:100%;object-fit:contain;background:#111}
+#vajraOpening .opening-enter{position:absolute;left:50%;bottom:clamp(18px,5vh,48px);transform:translateX(-50%);border:1px solid #bfc5cc;background:rgba(24,28,33,.82);color:#fff;border-radius:6px;padding:12px 24px;font-weight:650;letter-spacing:.08em}
+#vajraOpening .opening-enter:hover{background:#343b43}
+@media(prefers-reduced-motion:reduce){#vajraOpening *{transition:none!important}}
 </style>
 </head>
 <body>
 
-<section id="vajraOpening" aria-label="Vajra welcome">
- <div class="vajra-opening-inner">
-  <svg class="vajra-emblem" viewBox="0 0 420 340" role="img" aria-label="Vajra shield and eye emblem">
-   <defs><linearGradient id="vsteel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff"/><stop offset=".5" stop-color="#8e969f"/><stop offset="1" stop-color="#f5f7fa"/></linearGradient><radialGradient id="veye"><stop stop-color="#fff"/><stop offset=".28" stop-color="#08b7ff"/><stop offset="1" stop-color="#0646a7"/></radialGradient></defs>
-   <path d="M210 12 338 67 326 190Q305 275 210 326 115 275 94 190L82 67Z" fill="#05070b" stroke="url(#vsteel)" stroke-width="12"/>
-   <path d="M210 19 222 180 210 302 198 180Z" fill="url(#vsteel)"/>
-   <path d="M101 82 170 111 139 171 107 193Z M319 82 250 111 281 171 313 193Z" fill="#080b10" stroke="url(#vsteel)" stroke-width="9"/>
-   <path d="M117 187Q210 92 303 187Q210 282 117 187Z" fill="#020407" stroke="url(#vsteel)" stroke-width="8"/>
-   <circle cx="210" cy="187" r="34" fill="url(#veye)" stroke="#c8d0d9" stroke-width="6"/><circle cx="210" cy="187" r="12" fill="#020407"/>
-   <path d="M26 203H112L150 165M394 203H308L270 165" fill="none" stroke="#078df5" stroke-width="5"/>
-   <path d="M42 238H119L156 201M378 238H301L264 201" fill="none" stroke="#f20b19" stroke-width="5"/>
-   <path d="M53 238a8 8 0 1 0 0 .1M367 238a8 8 0 1 0 0 .1" fill="none" stroke="#f20b19" stroke-width="5"/>
-   <path d="M112 278Q22 335 72 340M308 56Q401 4 365 2" fill="none" stroke="#078df5" stroke-width="7" stroke-linecap="round"/>
-  </svg>
-  <div class="vajra-wordmark">VAJRA</div>
-  
-  <div class="vajra-motto">SECURE <span class="red">•</span> ANALYSE <span class="blue">•</span> INNOVATE</div>
-  <div class="vajra-services">
-   <div class="vajra-service"><svg viewBox="0 0 64 64"><path d="M32 5 55 14V31Q52 48 32 59 12 48 9 31V14Z"/><rect x="23" y="28" width="18" height="16" rx="3"/><path d="M27 28v-5a5 5 0 0 1 10 0v5"/></svg><strong>VAPT</strong></div>
-   <div class="vajra-service"><svg viewBox="0 0 64 64"><path d="m22 16-18 16 18 16M42 16 60 32 42 48M37 10 27 54"/></svg><strong>Web Development</strong></div>
-   <div class="vajra-service"><svg viewBox="0 0 64 64"><path d="M32 5 55 14V31Q52 48 32 59 12 48 9 31V14Z"/><path d="m20 32 8 8 17-18"/></svg><strong>Cybersecurity Consulting</strong></div>
-   <div class="vajra-service"><svg viewBox="0 0 64 64"><path d="M17 47H13a9 9 0 0 1 0-18 18 18 0 0 1 34-5 12 12 0 0 1 3 23h-5M32 55V29M22 39l10-10 10 10"/></svg><strong>Application Security</strong></div>
-  </div>
-  <button class="vajra-enter" id="enterVajra">Enter Proposal Workspace&nbsp; →</button>
-  <div class="vajra-enter-note">SECURE CLIENT ENGAGEMENTS · PROPOSAL MANAGEMENT</div>
- </div>
+<section id="vajraOpening" aria-label="VAJRA opening photograph">
+ <img class="original-opening-photo" src="/images/vajra-opening-original.jpg" alt="Original VAJRA opening photograph" onerror="document.getElementById('vajraOpening').hidden=true">
+ <button class="opening-enter" id="enterVajra" type="button">Enter workspace</button>
 </section>
 
 <div class="app">
